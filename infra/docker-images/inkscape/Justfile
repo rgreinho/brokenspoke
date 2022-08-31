@@ -1,0 +1,17 @@
+organization := "bna"
+image := "inkscape"
+tag := "1.0.0"
+top_dir := `git rev-parse --show-toplevel`
+tmp_asset_dir := top_dir / "infra/docker-images/inkscape/tmp_assets"
+asset_font_dir := top_dir / "assets/fonts"
+
+# Build the docker image
+build:
+  mkdir -p {{tmp_asset_dir}}/DharmaGothicExtended {{tmp_asset_dir}}/Montserrat
+  ln -f {{asset_font_dir}}/DharmaGothicExtended/* {{tmp_asset_dir}}/DharmaGothicExtended/
+  ln -f {{asset_font_dir}}/Montserrat/* {{tmp_asset_dir}}/Montserrat/
+  docker buildx build -t {{organization}}/{{image}}:{{tag}} .
+
+# Run the Docker image
+run:
+  docker run --rm {{organization}}/{{image}}:{{tag}} *.svg

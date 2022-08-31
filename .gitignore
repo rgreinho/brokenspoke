@@ -41,6 +41,7 @@ eggs/
 env/
 examples/data/
 htmlcov/
+infra/docker-images/inkscape/tmp_assets
 lib/
 lib64/
 nosetests.xml
