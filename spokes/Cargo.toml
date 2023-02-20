@@ -9,5 +9,5 @@ path = "src/shortcodes.rs"
 
 [dependencies]
 bnacore = { path = "../bnacore" }
-clap = { version = "3.2.17", features = ["cargo", "derive"] }
+clap = { version = "4.1.6", features = ["cargo", "derive"] }
 color-eyre = "0.6.2"
